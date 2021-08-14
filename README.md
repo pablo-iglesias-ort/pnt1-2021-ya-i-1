@@ -3,7 +3,7 @@
 ## Objetivos 📋
 Desarrollar un sistema de historias clinicas para un consultorio, que permita la administración y uso de esta. 
 De cara a los empleados): Pacientes, Medicos, Empleados, HistoriaClinica, Episodio, Evoluciones, Epicrisis con Diagnostico, etc., como así también, permitir a los pacientes, realizar consultas acerca de su Historia clinica.
-Utilizar Visual Studio 2019 preferentemente y crear una aplicación utilizando ASP.NET MVC Core (versión a definir por el docente 2.2 o 3.1).
+Utilizar Visual Studio 2019 preferentemente y crear una aplicación utilizando ASP.NET MVC Core 3.1.
 
 <hr />
 
@@ -209,7 +209,7 @@ De la misma manera Uds. deben definir los tipos de datos asociados a cada una de
 **Medico**
 - Un Medico, puede crear evoluciones, en Episodios que esten en estado abierto.
 -- Para ello, buscará al paciente, accederá a su Historia Clinica -> Episodio -> Crear la Evolución.
-- Un medico puede cerrar una evlución, si se han completado todos los campos. El campo de FechaYHoraCierre, se guardará automaticamente. 
+- Un medico puede cerrar una evolución, si se han completado todos los campos. El campo de FechaYHoraCierre, se guardará automaticamente. 
 -- Un Empleado o Medico, pueden cargar notas en cada evolución según sea necesario.
 -- Las notas pueden continuar agregandose, luego del cierre de la evolución.
 - Puede cerrar un Episodio, pero para hacer esto, el sistema realizará ciertas validaciones.
@@ -217,7 +217,7 @@ De la misma manera Uds. deben definir los tipos de datos asociados a cada una de
 **HistoriaClinica**
 - La misma se crea automaticamente con la creación de un paciente.
 -- No se puede eliminar, ni realizar modificaciones posteriores.
--- El detalle internos de la misma, para los Medicos y empleados, pero dependiendo del rol, es lo que podrán hacer.
+-- El detalle interno de la misma, para los Medicos y empleados, pero dependiendo del rol, es lo que podrán hacer.
 -- El paciente propietario de la HC, es el unico paciente que puede ver la HC.
 
 - Por medio de la HC, se podrá acceder a la lista de Episodios, que tenga relacionados.
@@ -233,13 +233,13 @@ De la misma manera Uds. deben definir los tipos de datos asociados a cada una de
 -- Con un Empleado, como el que creó el episodio. (persona en recepción, que recibe al paciente).
 
 - Solo un medico puede cerrar un Episodio, para hacer esto, el sistema, validará:
--- 1. Que el Episodio, no tenga ninguna Evlución en estado Abierta o no tenga evoluciones. Si fuese así, deberá mostrar un mensaje.
+-- 1. Que el Episodio, no tenga ninguna Evolución en estado Abierta o no tenga evoluciones. Si fuese así, deberá mostrar un mensaje.
 -- 2. Cargará el Medico manualmente la FechaYHoraAlta (alta del episodio) del paciente.
 -- 3. Le pedirá que cargue una Epicrisis, con su diagnostico y recomendaciones.
---- Una vez finalizado el diagnostico, el Episodio, pasará a esatr en estado Cerrado.
+--- Una vez finalizado el diagnostico, el Episodio, pasará a estar en estado Cerrado.
 -- 4. La FechaYHoraCierre, será cargada automaticamente, si se cumplen los requerimientos previos.
 
-Nota: Si el cierre del episodio, es por la condición sin evoluciones, se generará un "Cierre Administrativo", en el cual, el sistema, cargará una epicrisi, con alguna información que el empleado ingresará para dejar registro de que fue un cierre administrativo. Ej. El paciente realizó el ingreso y antes de ser atendido, se fué. 
+Nota: Si el cierre del episodio, es por la condición sin evoluciones, se generará un "Cierre Administrativo", en el cual, el sistema, cargará una epicrisis, con alguna información que el empleado ingresará para dejar registro de que fue un cierre administrativo. Ej. El paciente realizó el ingreso y antes de ser atendido, se fué. 
 
 **Evolucion**
 - Una evolución, solo la puede crear y gestionar un Medico.
@@ -264,7 +264,7 @@ Nota: Si el cierre del episodio, es por la condición sin evoluciones, se genera
 
 
 **Epicrisis**
-- La epicrisis, pertenes a un Episodio.
+- La epicrisis, pertenece a un Episodio.
 -- Solo puede haber una epicrisis por episodio.
 -- Para poder crearla, todas las evoluciones, deben estar cerradas.
 -- El Episodio debe estar abierto, y al finalizar este proceso, de estar todo ok, se debe cerrar automaticamente.
