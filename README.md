@@ -198,7 +198,7 @@ De la misma manera Uds. deben definir los tipos de datos asociados a cada una de
 
 **Producto y Categoria**
 - No pueden eliminarse del sistema. 
-- Solo los producto pueden dehabilitarse.
+- Solo los producto pueden deshabilitarse.
 
 **Sucursal**
 - Cada sucursal, tendrá su propio stock.
