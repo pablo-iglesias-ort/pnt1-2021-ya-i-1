@@ -207,7 +207,7 @@ De la misma manera Uds. deben definir los tipos de datos asociados a cada una de
 -- Para poder eliminar una sucursal, la misma no tiene que tener productos en su stock.
 
 **StockItem**
-- Pueden crearse, pero nunca pueden eliminarse desde el sistema. Son dependeintes de la surcursal.
+- Pueden crearse, pero nunca pueden eliminarse desde el sistema. Son dependientes de la surcursal.
 - Puede modificarse la cantidad en todo momento que se dispone de dicho producto, en el stock.
 - Se eliminaran, junto con la sucrusal, si esta fuese eliminada.
 
@@ -232,7 +232,7 @@ De la misma manera Uds. deben definir los tipos de datos asociados a cada una de
 -- Si no hay stock, verifica en otras locaciones, si hay stock. 
 --- Si hay en alguna, propone las locaciones o indica que no hay en stock.
 --- Si seleccionó una nueva locación, finaliza la compra.
-- Al Finalizar la compra, se le muestra le da las gracias al cliente, se le dá el Id de compra y los datos de la Sucursal que eligió.
+- Al Finalizar la compra, se le muestra un mensaje que le da las gracias al cliente, se le da el Id de compra y los datos de la Sucursal que eligió.
 - No se pueden eliminar las compras.
 
 
