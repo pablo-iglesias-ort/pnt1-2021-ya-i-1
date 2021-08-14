@@ -1,17 +1,18 @@
-# Carrito de Compras 📖
+# Historias Clinicas 📖
 
 ## Objetivos 📋
-Desarrollar un sistema, que permita la administración del stock de productos a una PYME que tiene algunas sucursales de venta de ropa (de cara a los empleados): Empleados, Clientes, Productos, Categorias, Compras, Carritos, Sucursal, StockItem, etc., como así también, permitir a los clientes, realizar compras Online.
-Utilizar Visual Studio 2019 preferentemente y crear una aplicación utilizando ASP.NET MVC Core 3.1.
+Desarrollar un sistema de historias clinicas para un consultorio, que permita la administración y uso de esta. 
+De cara a los empleados): Pacientes, Medicos, Empleados, HistoriaClinica, Episodio, Evoluciones, Epicrisis con Diagnostico, etc., como así también, permitir a los pacientes, realizar consultas acerca de su Historia clinica.
+Utilizar Visual Studio 2019 preferentemente y crear una aplicación utilizando ASP.NET MVC Core (versión a definir por el docente 2.2 o 3.1).
 
 <hr />
 
 ## Enunciado 📢
 La idea principal de este trabajo práctico, es que Uds. se comporten como un equipo de desarrollo.
-Este documento, les acerca, un equivalente al resultado de una primera entrevista entre el cliente y alguien del equipo, el cual relevó e identificó la información aquí contenida. 
+Este documento, les acerca, un equivalente al resultado de una primera entrevista entre el paciente y alguien del equipo, el cual relevó e identificó la información aquí contenida. 
 A partir de este momento, deberán comprender lo que se está requiriendo y construir dicha aplicación, 
 
-Deben recopilar todas las dudas que tengan y evacuarlas con su nexo (el docente) de cara al cliente. De esta manera, él nos ayudará a conseguir la información ya un poco más procesada. 
+Deben recopilar todas las dudas que tengan y evacuarlas con su nexo (el docente) de cara al paciente. De esta manera, él nos ayudará a conseguir la información ya un poco más procesada. 
 Es importante destacar, que este proceso, no debe esperar a ser en clase; es importante, que junten algunas consultas, sea de índole funcional o técnicas, en lugar de cada consulta enviarla de forma independiente.
 
 Las consultas que sean realizadas por correo deben seguir el siguiente formato:
@@ -59,15 +60,15 @@ Body:
 ## Entidades 📄
 
 - Usuario
-- Cliente
+- Paciente
+- Medico
 - Empleado
-- Producto
-- Categoria
-- Stock
-- StockItem
-- Carrito
-- CarritoItem
-- Compra
+- HistoriaClinica
+- Episodio
+- Evolucion
+- Notas
+- Epicrisis
+- Diagnostico
 
 `Importante: Todas las entidades deben tener su identificador unico. Id o <ClassNameId>`
 
@@ -84,7 +85,20 @@ De la misma manera Uds. deben definir los tipos de datos asociados a cada una de
 - Password
 ```
 
-**Cliente**
+**Paciente**
+```
+- Nombre
+- Apellido
+- DNI
+- Telefono
+- Direccion
+- FechaAlta
+- Email 
+- ObraSocial
+- HistoriaClinica
+```
+
+**Medico**
 ```
 - Nombre
 - Apellido
@@ -93,74 +107,73 @@ De la misma manera Uds. deben definir los tipos de datos asociados a cada una de
 - Direccion
 - FechaAlta
 - Email
-- Compras
-- Carritos
+- Matricula
+- Especialidad
 ```
 
 **Empleado**
 ```
 - Nombre
 - Apellido
+- DNI
 - Telefono
 - Direccion
 - FechaAlta
 - Email
+- Legajo
 ```
 
-**Producto**
+**HistoriaClinica**
 ```
-- Nombre
+- Paciente
+- Episodios
+```
+
+**Episodio**
+```
+- Motivo
 - Descripcion
-- PrecioVigente
-- Activo
-- Categoria
+- FechaYHoraInicio
+- FechaYHoraAlta
+- FechaYHoraCierre
+- EstadoAbierto
+- Evoluciones
+- Epicrisis
+- EmpleadoRegistra
 ```
 
-**Categoria**
+**Evolucion**
 ```
-- Nombre
+- Medico
+- FechaYHoraInicio
+- FechaYHoraAlta
+- FechaYHoraCierre
+- DescripcionAtencion
+- EstadoAbierto
+- Notas 
+```
+
+**Nota**
+```
+- Evolucion
+- Empleado
+- Mensaje
+- FechaYHora
+```
+
+**Epicrisis**
+```
+- Episodio
+- Medico
+- FechaYHora 
+- Diagnostico
+```
+
+**Diagnostico**
+```
+- Epicrisis
 - Descripcion
-- Productos
-```
-
-**Sucursal**
-```
-- Nombre
-- Direccion
-- Telefono
-- Email
-- StockItems
-```
-
-**StockItem**
-```
-- Sucursal
-- Producto
-- Cantidad
-```
-
-**Carrito**
-```
-- Activo
-- Cliente
-- CarritoItems
-- Subtotal
-```
-
-**CarritoItem**
-```
-- Carrito 
-- Producto
-- ValorUnitario
-- Cantidad
-- Subtotal
-```
-
-**Compra**
-```
-- Cliente 
-- Carrito
-- Total
+- Recomendacion
 ```
 
 
@@ -171,77 +184,104 @@ De la misma manera Uds. deben definir los tipos de datos asociados a cada una de
 ## Caracteristicas y Funcionalidades ⌨️
 `Todas las entidades, deben tener implementado su correspondiente ABM, a menos que sea implicito el no tener que soportar alguna de estas acciones.`
 
-**Usuario**
-- Los Clientes pueden auto registrarse.
-- La autoregistración desde el sitio, es exclusiva para los clientes. Por lo cual, se le asignará dicho rol.
-- Los empleados, deben ser agregados por otro empleado o administrador.
-	- Al momento, del alta del empleado, se le definirá un username y password.
-    - También se le asignará a estas cuentas el rol de Empleado.
+`IMPORTANTE: Ninguna entidad en el circuito de atención medica, puede ser modificado o eliminado una vez que se ha creado. Ej. No se puede Eliminar una Historia Clinica, No se puede modificar una nota de una evolución, etc.`
 
-**Cliente**
-- Un cliente puede navegar los productos y sus descripciones sin iniciar sesión, de forma anonima. 
-- Para agregar productos en cantidad al carrito, debe iniciar sesión primero.
-- El cliente, puede agregar diferentes productos en el carrito, y por cada producto modificar la cantidad que quiere.
--- Esta acción, no implica validación en stock.
--- El ciente, verá el subtotal, por cada producto/cantidad.
--- También, verá el subtotal, del carrito.
-- El cliente, una vez que está satisfecho con su carrito, puede finalizar la compra y elejirá un lugar para retirar.
-- El cliente puede vaciar el carrito.
-- Puede actualizar datos de contacto, direccion, telefono. Pero no puede modificar su Email, DNI, Nombre, Apellido, etc.
-- El cliente puede ver el historial de sus compras. Id,Fecha,Sucursal,Monto
+**Usuario**
+- Los Pacientes pueden auto registrarse.
+- La autoregistración desde el sitio, es exclusiva para los pacientes. Por lo cual, se le asignará dicho rol.
+- Los empleados, deben ser agregados por otro Empleado. Lo mismo, para los Medicos.
+	- Al momento, del alta del empleado o medico, se le definirá un username y password.
+    - También se le asignará a estas cuentas el rol de empleado y/o medico según corresponda.
+
+**Paciente**
+- Un paciente puede consultar su historia clinica, con todos los detalles que la componen, en modo solo visualización.
+- Puede acceder a los episodios, y por cada episodio, ver las evoluciones que se tienen, con sus detalles.
+- Puede actualizar datos de contacto, como el telefono, dirección,etc.. Pero no puede modificar su DNI, Nombre, Apellido, etc.
 
 **Empleado**
-- El empleado, puede listar las compras realizadas en el mes, en modo listado, ordenado de forma descendente por valor de compra.
-- Puede dar de alta otros empleados.
-- Puede crear productos, categorias, Sucursales, agregar productos al stock de cada sucursal.
-- Puede habilitar y/o deshabilitar productos.
+- Un empleado, puede modificar todos los datos de los pacientes. 
+-- No puede quitar o asociar una nueva Historia Clinica a los pacientes.
+- El Empleado puede listar todos los pacientes, y por cada uno, ver en sus detalles, la HistoriaClinica que tiene asociada y si tiene episodios abiertos. 
+- El Empleado, puede crear un paciente, un empleado, y un medico. Cada uno de ellos, con su correspondientes datos requeridos y usuario.
+- El Empleado, puede crear un Episodio para el Paciente, en la Historia Clinica del paciente.
+-- Pero no puede hacer más nada, que crearlo con su Motivo y Descripción.
 
-**Producto y Categoria**
-- No pueden eliminarse del sistema. 
-- Solo los producto pueden deshabilitarse.
+**Medico**
+- Un Medico, puede crear evoluciones, en Episodios que esten en estado abierto.
+-- Para ello, buscará al paciente, accederá a su Historia Clinica -> Episodio -> Crear la Evolución.
+- Un medico puede cerrar una evlución, si se han completado todos los campos. El campo de FechaYHoraCierre, se guardará automaticamente. 
+-- Un Empleado o Medico, pueden cargar notas en cada evolución según sea necesario.
+-- Las notas pueden continuar agregandose, luego del cierre de la evolución.
+- Puede cerrar un Episodio, pero para hacer esto, el sistema realizará ciertas validaciones.
 
-**Sucursal**
-- Cada sucursal, tendrá su propio stock.
-- Y sus datos de locación y contacto.
-- Por el mercado tan volatil, las sucursales, pueden crearse y eliminarse en todo momento.
--- Para poder eliminar una sucursal, la misma no tiene que tener productos en su stock.
+**HistoriaClinica**
+- La misma se crea automaticamente con la creación de un paciente.
+-- No se puede eliminar, ni realizar modificaciones posteriores.
+-- El detalle internos de la misma, para los Medicos y empleados, pero dependiendo del rol, es lo que podrán hacer.
+-- El paciente propietario de la HC, es el unico paciente que puede ver la HC.
 
-**StockItem**
-- Pueden crearse, pero nunca pueden eliminarse desde el sistema. Son dependientes de la surcursal.
-- Puede modificarse la cantidad en todo momento que se dispone de dicho producto, en el stock.
-- Se eliminaran, junto con la sucrusal, si esta fuese eliminada.
+- Por medio de la HC, se podrá acceder a la lista de Episodios, que tenga relacionados.
 
-**Carrito**
-- El carrito se crea automaticamente con la creación de un cliente, en estado activo.
-- Solo puede haber un carrito activo por usuario en el sistema.
-- Un carrito que no está activo, no puede modificarse en ningún aspecto.
-- No se puede eliminar carritos.
-- El carrito, se desactiva al momento de realizarse una compra de manera automatica.
-- Al vaciar el carrito, se eliminan todos los CarritoItems y datos que sean necesarios.
-- El subtotal, es un dato calculado.
+**Epidodio**
+- La creación de un Episodio en una HC, solo puede realizarla un empleado.
+-- El empleado, deberia acceder a un Paciente -> HC -> Crear Episodio, e ingresará:
+--- Motivo. Ej. Traumatismo en pierna Izquierda.
+--- Descripción. Ej. El paciente se encontraba andando en Skate y sufrió un accidente.
+- El episodio se:
+-- Creará en estadoAbierto automaticamente
+-- Con una FechaYHoraInicio también, de forma automática.
+-- Con un Empleado, como el que creó el episodio. (persona en recepción, que recibe al paciente).
 
-**CarritoItem**
-- El valor unitario del carritoItem, debe actualizarse, al realizar cualquier modificación, según el precio que tenga vigente el producto.
-- El subtotal, debe ser una propiedad calculada, en base a la cantidad x el valor unitario.
+- Solo un medico puede cerrar un Episodio, para hacer esto, el sistema, validará:
+-- 1. Que el Episodio, no tenga ninguna Evlución en estado Abierta o no tenga evoluciones. Si fuese así, deberá mostrar un mensaje.
+-- 2. Cargará el Medico manualmente la FechaYHoraAlta (alta del episodio) del paciente.
+-- 3. Le pedirá que cargue una Epicrisis, con su diagnostico y recomendaciones.
+--- Una vez finalizado el diagnostico, el Episodio, pasará a esatr en estado Cerrado.
+-- 4. La FechaYHoraCierre, será cargada automaticamente, si se cumplen los requerimientos previos.
+
+Nota: Si el cierre del episodio, es por la condición sin evoluciones, se generará un "Cierre Administrativo", en el cual, el sistema, cargará una epicrisi, con alguna información que el empleado ingresará para dejar registro de que fue un cierre administrativo. Ej. El paciente realizó el ingreso y antes de ser atendido, se fué. 
+
+**Evolucion**
+- Una evolución, solo la puede crear y gestionar un Medico.
+-- La unica excepción, es que un empleado, puede cargar notas en Evoluciones por cuestiones administrativas. Ej. Salvo, que el alta del paciente en la evolución, es 10/08/2020
+- Automaticamente al crear una evolución se cargará:
+-- Medico que la esta creando
+-- FechaYHoraInicio
+-- EstadoAbierto
+-- FechaYHoraCierre (Cuando se registre el cierre)
+- Manualmente:
+-- La FechaYHoraAlta
+-- DescripcionAtencion
+-- Notas (Las que sean necesarias)
+
+- Para cerrar una evolución, se deben haber cargado todos los datos manuales requeridos, y solo lo puede hacer un Medico.
+
+**Nota**
+- La nota pertenece a una evolución. 
+-- Para crearla, uno solo puede hacerla desde una Evolución.
+- En las notas, puede cargar un mensaje cualquier empleado o medico.
+- Quedará automaticmente la fecha y hora, como asi también, quien es el que la cargó.
 
 
-**Compra**
-- Al generarse la compra, el carrito que tiene asociado, pasa a estar en estado Inactivo.
-- Al finalizar la compra, se validará si hay disponibles en el stock de la locación que seleccionó el cliente. 
--- Si hay stock, disminuye el mismo, y crea la compra.
--- Si no hay stock, verifica en otras locaciones, si hay stock. 
---- Si hay en alguna, propone las locaciones o indica que no hay en stock.
---- Si seleccionó una nueva locación, finaliza la compra.
-- Al Finalizar la compra, se le muestra un mensaje que le da las gracias al cliente, se le da el Id de compra y los datos de la Sucursal que eligió.
-- No se pueden eliminar las compras.
+**Epicrisis**
+- La epicrisis, pertenes a un Episodio.
+-- Solo puede haber una epicrisis por episodio.
+-- Para poder crearla, todas las evoluciones, deben estar cerradas.
+-- El Episodio debe estar abierto, y al finalizar este proceso, de estar todo ok, se debe cerrar automaticamente.
+-- La epicrisis, solo debe poder cargarla un Medico.
+-- La excepción, es la creación automatica, si cierra un empleado, por proceso administrativo.
+-- La FechayHora, se carga automaticamente
+-- El Diagnostico, de forma Manual.
+
+**Diagnostico**
+- Pertenece a una Epicrisis. 
+- Se cargará una descripcion de forma manual
+- También se cargará una recomendacion.
 
 
 **Aplicación General**
 - Información institucional.
-- Se deben mostrar los productos por categoría.
-- Los productos que están deshabilitados, deben visualizarse como Pausados. Independientemente, de que haya o no en stock.
+- Se deben listar el cuerpo medico, junto con sus especialidades.
 - Los accesos a las funcionalidades y/o capacidades, debe estar basada en los roles que tenga cada individuo.
 
-`
-Nota: El negocio tiene lugar y posibilidades de tener un stock ilimitado y cada sucursal está preparado para vender cualquier producto, por lo cual esto no implica restricciones.
-`
+
