@@ -1,4 +1,4 @@
-﻿using Grupo1.Models;
+﻿using HistoriasClinicas.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -7,7 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Grupo1.Controllers
+namespace HistoriasClinicas.Controllers
 {
     public class HomeController : Controller
     {

@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Grupo1
+namespace HistoriasClinicas
 {
     public class Startup
     {
