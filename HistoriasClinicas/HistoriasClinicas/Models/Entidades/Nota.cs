@@ -4,10 +4,10 @@ namespace HistoriasClinicas.Models.Entidades
 {
     public class Nota
     {
-        public int NotaId { get; set; }
-        public Evolucion Evolucion { get; set; }
-        public Empleado Empleado { get; set; }
-        public string Mensaje { get; set; }
-        public DateTime FechaYHora { get; set; }
+        private int NotaId { get; set; }
+        private Evolucion Evolucion { get; set; }
+        private Empleado Empleado { get; set; }
+        private string Mensaje { get; set; }
+        private DateTime FechaYHora { get; set; }
     }
 }
