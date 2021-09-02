@@ -4,6 +4,7 @@ namespace HistoriasClinicas.Models.Entidades
 {
     public class Episodio
     {
+        private int EpisodioId { get; set; }
         private string Motivo { get; set; }
         private string Descripcion { get; set; }
         private DateTime FechaYHoraInicio { get; set; }
