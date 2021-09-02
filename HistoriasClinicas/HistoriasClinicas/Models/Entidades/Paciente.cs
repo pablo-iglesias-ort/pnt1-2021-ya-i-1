@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace HistoriasClinicas.Models.Entidades
 {
@@ -15,10 +12,6 @@ namespace HistoriasClinicas.Models.Entidades
         private DateTime FechaAlta { get; set; }
         private string Email { get; set; }
         private string ObraSocial { get; set; }
-        private HistoriaClinica historiaClinica { get; set; }
-
-            
-
-
+        private HistoriaClinica HistoriaClinica { get; set; }
     }
 }
