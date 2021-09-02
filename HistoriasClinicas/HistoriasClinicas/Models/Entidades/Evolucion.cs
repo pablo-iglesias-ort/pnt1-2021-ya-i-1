@@ -5,13 +5,13 @@ namespace HistoriasClinicas.Models.Entidades
 {
     public class Evolucion
     {
-        public int EvolucionId { get; set; }
-        public Medico Medico { get; set; }
-        public DateTime FechaYHoraInicio { get; set; }
-        public DateTime FechaYHoraAlta { get; set; }
-        public DateTime FechaYHoraCierre { get; set; }
-        public string DescripcionAtencion { get; set; }
-        public bool EstadoAbierto { get; set; }
-        public List<Nota> Notas { get; set; }
+        private int EvolucionId { get; set; }
+        private Medico Medico { get; set; }
+        private DateTime FechaYHoraInicio { get; set; }
+        private DateTime FechaYHoraAlta { get; set; }
+        private DateTime FechaYHoraCierre { get; set; }
+        private string DescripcionAtencion { get; set; }
+        private bool EstadoAbierto { get; set; }
+        private List<Nota> Notas { get; set; }
     }
 }
