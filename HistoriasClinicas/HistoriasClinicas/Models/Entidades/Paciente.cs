@@ -7,15 +7,19 @@ namespace HistoriasClinicas.Models.Entidades
 {
     public class Paciente
     {
-        private string Nombre { get; set; }
-        private string Apellido { get; set; }
-        private string Dni { get; set; }
-        private string Telefono { get; set; }
-        private string Direccion { get; set; }
-        private DateTime FechaAlta { get; set; }
-        private string Email { get; set; }
-        private string ObraSocial { get; set; }
-        private HistoriaClinica historiaClinica { get; set; }
+
+        public Guid Id{ get; set; }
+        public string Nombre { get; set; }
+        public string Apellido { get; set; }
+        public string Dni { get; set; }
+        public string Telefono { get; set; }
+        public string Direccion { get; set; }
+        public DateTime FechaAlta { get; set; }
+        public string Email { get; set; }
+        public string ObraSocial { get; set; }
+        public HistoriaClinica historiaClinica { get; set; }
+
+        
 
             
 

@@ -7,10 +7,11 @@ namespace HistoriasClinicas.Models.Entidades
 {
     public class Usuario
     {
-        private string Nombre { get; set; }
-        private string Email { get; set; }
-        private DateTime fechaAlta { get; set; }
-        private string Password { get; set; }
+        public Guid  Id { get; set; }
+        public string Nombre { get; set; }
+        public string Email { get; set; }
+        public DateTime fechaAlta { get; set; }
+        public string Password { get; set; }
 
     
     

@@ -7,5 +7,6 @@ namespace HistoriasClinicas.Models.Entidades
 {
     public class HistoriaClinica
     {
+        public Guid ID{ get; set; }
     }
 }
