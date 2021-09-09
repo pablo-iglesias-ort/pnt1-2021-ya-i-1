@@ -19,5 +19,11 @@ namespace HistoriasClinicas.Data
         public DbSet<HistoriasClinicas.Models.Entidades.Medico> Medico { get; set; }
 
         public DbSet<HistoriasClinicas.Models.Entidades.Paciente> Paciente { get; set; }
+
+        public DbSet<HistoriasClinicas.Models.Entidades.Empleado> Empleado { get; set; }
+
+        public DbSet<HistoriasClinicas.Models.Entidades.Episodio> Episodio { get; set; }
+
+        public DbSet<HistoriasClinicas.Models.Entidades.HistoriaClinica> HistoriaClinica { get; set; }
     }
 }

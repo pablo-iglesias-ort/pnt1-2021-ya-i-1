@@ -4,7 +4,7 @@ namespace HistoriasClinicas.Models.Entidades
 {
     public class Paciente
     {
-<<<<<<< HEAD
+/*<<<<<<< HEAD*/
 
         public Guid Id{ get; set; }
         public string Nombre { get; set; }
@@ -22,7 +22,7 @@ namespace HistoriasClinicas.Models.Entidades
             
 
 
-=======
+/*=======
         private string Nombre { get; set; }
         private string Apellido { get; set; }
         private string Dni { get; set; }
@@ -32,6 +32,6 @@ namespace HistoriasClinicas.Models.Entidades
         private string Email { get; set; }
         private string ObraSocial { get; set; }
         private HistoriaClinica HistoriaClinica { get; set; }
->>>>>>> fa8a645f37987e98ed87a6fe6e909f70e1f36ccc
+/*>>>>>>> fa8a645f37987e98ed87a6fe6e909f70e1f36ccc*/
     }
 }

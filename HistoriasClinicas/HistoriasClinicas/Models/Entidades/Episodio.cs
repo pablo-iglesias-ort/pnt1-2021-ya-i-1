@@ -4,16 +4,16 @@ namespace HistoriasClinicas.Models.Entidades
 {
     public class Episodio
     {
-        private int EpisodioId { get; set; }
-        private string Motivo { get; set; }
-        private string Descripcion { get; set; }
-        private DateTime FechaYHoraInicio { get; set; }
-        private DateTime FechaYHoraAlta { get; set; }
-        private DateTime FechaYHoraCierre { get; set; }
-        private bool EstadoAbierto { get; set; }
-        private Evolucion evoluciones { get; set; }
-        private Epicrisis epicrisis { get; set; }
-        private bool EmpleadoRegistra { get; set; } /* en duda si dejar bool */
+        public Guid Id { get; set; }
+        public string Motivo { get; set; }
+        public string Descripcion { get; set; }
+        public DateTime FechaYHoraInicio { get; set; }
+        public DateTime FechaYHoraAlta { get; set; }
+        public DateTime FechaYHoraCierre { get; set; }
+        public bool EstadoAbierto { get; set; }
+        /*public Evolucion evoluciones { get; set; }*/
+        /*public Epicrisis epicrisis { get; set; }*/
+        public bool EmpleadoRegistra { get; set; } /* en duda si dejar bool */
 
     }
 }

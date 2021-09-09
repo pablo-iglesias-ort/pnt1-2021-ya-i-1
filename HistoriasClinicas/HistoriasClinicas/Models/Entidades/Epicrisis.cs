@@ -4,10 +4,10 @@ namespace HistoriasClinicas.Models.Entidades
 {
     public class Epicrisis
     {
-        private int EpicrisisId { get; set; }
-        private Episodio Episodio { get; set; }
-        private Medico Medico { get; set; }
-        private DateTime FechaYHora { get; set; }
-        private Diagnostico Diagnostico { get; set; }
+        public Guid Id { get; set; } /* Cambiado el tipo de dato pq no me dejaba hacer el scaffolding*/
+        public Episodio Episodio { get; set; }
+        public Medico Medico { get; set; }
+        public DateTime FechaYHora { get; set; }
+        public Diagnostico Diagnostico { get; set; }
     }
 }
