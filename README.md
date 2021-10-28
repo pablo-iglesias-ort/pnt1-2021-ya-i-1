@@ -150,15 +150,6 @@ De la misma manera Uds. deben definir los tipos de datos asociados a cada una de
 - FechaYHoraCierre
 - DescripcionAtencion
 - EstadoAbierto
-- Notas 
-```
-
-**Nota**
-```
-- Evolucion
-- Empleado
-- Mensaje
-- FechaYHora
 ```
 
 **Epicrisis**
@@ -222,13 +213,13 @@ De la misma manera Uds. deben definir los tipos de datos asociados a cada una de
 
 - Por medio de la HC, se podrá acceder a la lista de Episodios, que tenga relacionados.
 
-**Epidodio**
+**Episodio**
 - La creación de un Episodio en una HC, solo puede realizarla un empleado.
 -- El empleado, deberia acceder a un Paciente -> HC -> Crear Episodio, e ingresará:
 --- Motivo. Ej. Traumatismo en pierna Izquierda.
 --- Descripción. Ej. El paciente se encontraba andando en Skate y sufrió un accidente.
 - El episodio se:
--- Creará en estadoAbierto automaticamente
+-- Creará en estado abierto automaticamente
 -- Con una FechaYHoraInicio también, de forma automática.
 -- Con un Empleado, como el que creó el episodio. (persona en recepción, que recibe al paciente).
 
@@ -239,11 +230,9 @@ De la misma manera Uds. deben definir los tipos de datos asociados a cada una de
 --- Una vez finalizado el diagnostico, el Episodio, pasará a estar en estado Cerrado.
 -- 4. La FechaYHoraCierre, será cargada automaticamente, si se cumplen los requerimientos previos.
 
-Nota: Si el cierre del episodio, es por la condición sin evoluciones, se generará un "Cierre Administrativo", en el cual, el sistema, cargará una epicrisis, con alguna información que el empleado ingresará para dejar registro de que fue un cierre administrativo. Ej. El paciente realizó el ingreso y antes de ser atendido, se fué. 
 
 **Evolucion**
 - Una evolución, solo la puede crear y gestionar un Medico.
--- La unica excepción, es que un empleado, puede cargar notas en Evoluciones por cuestiones administrativas. Ej. Salvo, que el alta del paciente en la evolución, es 10/08/2020
 - Automaticamente al crear una evolución se cargará:
 -- Medico que la esta creando
 -- FechaYHoraInicio
@@ -252,15 +241,8 @@ Nota: Si el cierre del episodio, es por la condición sin evoluciones, se genera
 - Manualmente:
 -- La FechaYHoraAlta
 -- DescripcionAtencion
--- Notas (Las que sean necesarias)
 
 - Para cerrar una evolución, se deben haber cargado todos los datos manuales requeridos, y solo lo puede hacer un Medico.
-
-**Nota**
-- La nota pertenece a una evolución. 
--- Para crearla, uno solo puede hacerla desde una Evolución.
-- En las notas, puede cargar un mensaje cualquier empleado o medico.
-- Quedará automaticmente la fecha y hora, como asi también, quien es el que la cargó.
 
 
 **Epicrisis**
@@ -269,7 +251,6 @@ Nota: Si el cierre del episodio, es por la condición sin evoluciones, se genera
 -- Para poder crearla, todas las evoluciones, deben estar cerradas.
 -- El Episodio debe estar abierto, y al finalizar este proceso, de estar todo ok, se debe cerrar automaticamente.
 -- La epicrisis, solo debe poder cargarla un Medico.
--- La excepción, es la creación automatica, si cierra un empleado, por proceso administrativo.
 -- La FechayHora, se carga automaticamente
 -- El Diagnostico, de forma Manual.
 
